@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import IntroPage from "./components/IntroPage"
+import QuizzPage from "./components/QuizzPage"
 
 import './App.css'
 
@@ -13,11 +14,12 @@ function App() {
       .then(data => setQuestions(data.results))
   }
 
-  console.log(questions)
-
   return (
     <main>
-      <IntroPage handleClick={createNewQuiz} />
+      {questions.length === 0 ? 
+        <IntroPage handleClick={createNewQuiz} /> :
+        <QuizzPage />
+      }
     </main>
   )
 }
