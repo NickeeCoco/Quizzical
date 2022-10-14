@@ -12,7 +12,6 @@ function App() {
     fetch("https://opentdb.com/api.php?amount=5")
       .then(response => response.json())
       .then(data => setQuestions(data.results))
-      console.log("fetched")
   }
 
   return (

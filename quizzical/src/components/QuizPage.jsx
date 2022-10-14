@@ -23,7 +23,7 @@ function QuizPage(props) {
 
     return (<div className="quiz">
             {questionElements}
-            <Button text="Check answers" />
+            <Button text="Check answers" handleClick={() => console.log("clicked!")} />
         </div>)
 }
 

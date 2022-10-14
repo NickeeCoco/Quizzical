@@ -1,5 +1,5 @@
 .quiz {
-    margin: 3em;
+    padding: 0 2em;
 }
 
 .question-container {
@@ -8,15 +8,15 @@
 }
 
 .question {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     line-height: 1.1;
     text-align: left;
 }
 
 .answers {
-    margin-block: 1em;
+    margin-block: 1.1em;
     display: flex;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .answer {
