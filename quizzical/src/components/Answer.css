@@ -1,0 +1,13 @@
+.answer {
+    margin-right: 1.5em;
+    border: #4D5B9E 2px solid ;
+    border-radius: 18px;
+    padding: .4em 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+.answer:hover, .selected {
+    background-color: #D6DBF5;
+    border: #D6DBF5 2px solid ;
+}

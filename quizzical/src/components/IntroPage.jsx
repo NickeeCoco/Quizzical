@@ -1,4 +1,3 @@
-import Button from "./Button"
 import "./IntroPage.css"
 
 function IntroPage(props) {
@@ -6,7 +5,7 @@ function IntroPage(props) {
         <>
             <h1 className="intro--title">Quizzical</h1>
             <p className="intro--description">Test your knowledge with fun quizzes!</p>
-            <Button text="Start quiz" handleClick={props.handleClick} />
+            <button onClick={props.handleClick}>Start quiz</button>
         </>
     )
 }
