@@ -5,9 +5,11 @@
     padding: .4em 1.2em;
     display: flex;
     align-items: center;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
-.answer:hover, .selected {
+.answer:hover {
+    border-color: #D6DBF5;
     background-color: #D6DBF5;
-    border: #D6DBF5 2px solid ;
 }

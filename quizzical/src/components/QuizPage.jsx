@@ -5,6 +5,8 @@ import Answer from "./Answer"
 import "./QuizPage.css"
 
 function QuizPage(props) {
+    const [isAnswersShown, setIsAnswersShow] = useState(false)
+
     // This function was found on stack overflow, used to remove HTML codes from questions & answers
     // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
     function htmlDecode(input) {
@@ -22,7 +24,7 @@ function QuizPage(props) {
     }
 
     function checkAnswers() {
-
+        setIsAnswersShow(true)
     }
 
     const questionElements = props.questions.map(item => {
@@ -41,7 +43,7 @@ function QuizPage(props) {
         }
 
         const answersElements = allAnswers.map(answer => 
-            <Answer key={answer.id} answer={answer} handleClick={() => selectAnswer(answer.id)} />)
+            <Answer key={answer.id} answer={answer} handleClick={() => selectAnswer(answer.id)} showAnswer={isAnswersShown} />)
 
         return (<div className="question-container">
             <h2 className="question">{htmlDecode(question)}</h2>
@@ -55,7 +57,7 @@ function QuizPage(props) {
 
     return (<div className="quiz">
             {questionElements}
-            <button>Check answers</button>
+            <button onClick={checkAnswers}>Check answers</button>
         </div>)
 }
 

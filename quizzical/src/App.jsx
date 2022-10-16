@@ -14,8 +14,6 @@ function App() {
       .then(data => setQuestions(data.results))
   }
 
-  console.log(questions)
-
   return (
     <main>
       {questions.length > 0 ? 
