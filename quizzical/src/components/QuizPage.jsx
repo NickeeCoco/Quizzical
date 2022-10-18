@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {nanoid} from "nanoid"
 import Answer from "./Answer"
 
@@ -31,7 +31,9 @@ function QuizPage(props) {
         const {question, correct_answer, incorrect_answers} = item
 
         const wrongAnswers = incorrect_answers.map(item => generateAnswerObject(item, false))
-        const [allAnswers, setAllAnswers] = useState([generateAnswerObject(correct_answer, true), ...wrongAnswers])
+        const answersArray = [generateAnswerObject(correct_answer, true), ...wrongAnswers]
+
+        const [allAnswers, setAllAnswers] = useState(randomizeAnwsers(answersArray))
 
         function selectAnswer(id) {
             setAllAnswers(prevAnswers => prevAnswers.map(answer => {
@@ -42,8 +44,38 @@ function QuizPage(props) {
             )
         }
 
+        // Fisher-Yates algorithm
+        // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+        function randomizeAnwsers(answersArray) {
+            
+            // if true/false answers, arrange answers in the order True / False
+            if(answersArray.length === 2) {                
+                if(answersArray[0].text === "True") {
+                    return [answersArray[0], answersArray[1]]
+                } else {
+                    return [answersArray[1], answersArray[0]]
+                }
+            }
+
+            let currentIndex = answersArray.length
+            let randomIndex
+
+            while(currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex)
+                currentIndex--
+
+                [answersArray[currentIndex], answersArray[randomIndex]] = [answersArray[randomIndex], answersArray[currentIndex]]
+            }
+
+            return answersArray
+        }
+
         const answersElements = allAnswers.map(answer => 
-            <Answer key={answer.id} answer={answer} handleClick={() => selectAnswer(answer.id)} showAnswer={isAnswersShown} />)
+            <Answer 
+                key={answer.id} 
+                answer={answer} 
+                handleClick={() => selectAnswer(answer.id)} 
+                showAnswer={isAnswersShown} />)
 
         return (<div className="question-container">
             <h2 className="question">{htmlDecode(question)}</h2>
