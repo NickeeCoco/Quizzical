@@ -17,7 +17,7 @@ function App() {
   return (
     <main>
       {questions.length > 0 ? 
-        <QuizPage questions={questions} /> :
+        <QuizPage questions={questions} handleClick={createNewQuiz} /> :
         <IntroPage handleClick={createNewQuiz} />
       }
     </main>

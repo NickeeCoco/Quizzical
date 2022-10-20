@@ -1,0 +1,11 @@
+.question {
+    font-size: 1.5rem;
+    line-height: 1.1;
+    text-align: left;
+}
+
+.answers {
+    margin-top: 1.1em;
+    display: flex;
+    font-size: 1.1rem;
+}
