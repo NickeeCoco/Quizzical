@@ -6,3 +6,15 @@
     padding-block: 2em;
     border-bottom: #DBDEF0 1px solid;
 }
+
+.results {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.results p {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-right: 1.2em;
+}

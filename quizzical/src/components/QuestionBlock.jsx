@@ -5,7 +5,7 @@ import { nanoid } from "nanoid"
 
 
 function Question(props) {
-    const { question, isAnswersShown } = props
+    const { question, isAnswersShown, setFinalScore } = props
 
     const [allAnswers, setAllAnswers] = useState(randomizeAnswers(generateAnswersArray()))
 
@@ -68,7 +68,7 @@ function Question(props) {
             return answer.id === id ? 
                 {...answer, isSelected: true} :
                 {...answer, isSelected: false}
-        }))       
+        }))
     }
 
     const answersElements = allAnswers.map(answer =>
@@ -76,7 +76,8 @@ function Question(props) {
             key={answer.id}
             answer={answer}
             handleClick={() => selectAnswer(answer.id)}
-            showAnswer={isAnswersShown} />)
+            showAnswers={isAnswersShown}
+            setFinalScore={setFinalScore} />)
 
     return (
         <div className="question-container">

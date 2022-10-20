@@ -7,10 +7,11 @@ function QuizPage(props) {
     const [isAnswersShown, setIsAnswersShown] = useState(false)
     const [finalScore, setFinalScore] = useState(0)
 
+    console.log(finalScore)
+
     function newGame() {
         props.handleClick()
         setIsAnswersShown(false)
-        setFinalScore(0)
     }
 
     function checkAnswers() {
@@ -21,15 +22,15 @@ function QuizPage(props) {
         return <QuestionBlock 
                     question={item} 
                     key={item.question}
-                    isAnswersShown={isAnswersShown} />
+                    isAnswersShown={isAnswersShown}
+                    setFinalScore={setFinalScore} />
     })
 
-    
 
     return (<div className="quiz">
             {questionElements}
             <div className="results">
-                { isAnswersShown && <p>{finalScore}</p>}
+                { isAnswersShown && <p>You scored {finalScore}/5 correct answers</p>}
                 { isAnswersShown ? 
                     <button onClick={newGame}>Play again</button> :
                     <button onClick={checkAnswers}>Check answers</button> }
